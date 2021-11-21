@@ -1,4 +1,4 @@
-// import './css/styles.css'; //TODO написать стили для формы
+import './css/styles.css'; 
 
 import fetchPhoto from "./services/api-service";
 
@@ -37,29 +37,29 @@ const createMarkupCard = (data) => {
 
     return data.map(({ id, webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
         
-        `<div class='' id='${id}'>
+        `<div class='item card' id='${id}'>
             <a class="gallery__item" href="${webformatURL}">
-                <img class="gallery__image" width ='50'src="${largeImageURL}" alt="${tags}" />
+                <img class="gallery-image" src="${largeImageURL}" alt="${tags}" />
             </a>
-            <ul class=''>
-                <li>
-                    <p>Likes</p>
-                    <p>${likes}</p>
+            <ul class='category-list'>
+                <li class='catebory-item'>
+                    <p class='category'>Likes</p>
+                    <p class='category-value'>${likes}</p>
                 </li>
-                <li>
-                    <p>Views</p>
-                    <p>${views}</p>
+                <li class='catebory-item'>
+                    <p class='category'>Views</p>
+                    <p class='category-value'>${views}</p>
                 </li>
-                <li>
-                    <p>Comments</p>
-                    <p>${comments}</p>
+                <li class='catebory-item'>
+                    <p class='category'>Comments</p>
+                    <p class='category-value'>${comments}</p>
                 </li>
-                <li>
-                    <p>Downloads</p>
-                    <p>${downloads}</p>
+                <li class='catebory-item'>
+                    <p class='category'>Downloads</p>
+                    <p class='category-value'>${downloads}</p>
                 </li>
-        </ul>
-    </div>`,
+            </ul>
+        </div>`,
     )
     .join('');
 
