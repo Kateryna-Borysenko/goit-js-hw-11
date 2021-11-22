@@ -30,6 +30,7 @@ function onSearch(e) {
             }
             refs.gallary.innerHTML = "";
             refs.gallary.insertAdjacentHTML('beforeend', createMarkupCard(data.hits));
+            addSimpleLightbox();
             if (data.totalHits > 0) {
                 refs.loadMoreBtn.classList.remove('is_hidden');
             }
@@ -53,8 +54,8 @@ function onLoadMore() {
                 Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
             }
             refs.gallary.insertAdjacentHTML('beforeend', createMarkupCard(data.hits));
+            addSimpleLightbox();
         })
-
 }
 /////////////////////////////////////////
 
@@ -64,7 +65,7 @@ const createMarkupCard = (data) => {
 
         `<div class='item card' id='${id}'>
         <a class="gallery__item" href="${webformatURL}">
-            <img class="gallery-image" src="${largeImageURL}" alt="${tags}" />
+            <img class="gallery-image"  loading="lazy" src="${largeImageURL}" alt="${tags}" />
         </a>
         <ul class='category-list'>
             <li class='catebory-item'>
@@ -94,4 +95,6 @@ refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 // настройки с библиотеки  SimpleLightbox
-new SimpleLightbox('.gallery a').refresh();
+function addSimpleLightbox() {
+    new SimpleLightbox('.gallery a').refresh();
+}
