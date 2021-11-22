@@ -21,6 +21,9 @@ function onSearch(e) {
 
     //при submit form -> сохранять текущее значение input
     searchQuery = e.currentTarget.elements.searchQuery.value;
+    if (searchQuery === '') {
+        return;
+    }
 
     fetchPhoto(searchQuery, page)
         .then(data => {

@@ -11,7 +11,7 @@ export default function fetchPhoto(searchQuery, page) {
             if (response.status === 404) {
                 return Promise.reject(new Error(response.message));
             }
-            return response;
+            return response.json();
         })
-        .then(data => data.json())
+       
 }
