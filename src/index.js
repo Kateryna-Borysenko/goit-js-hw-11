@@ -37,24 +37,24 @@ function onSearch(e) {
             if (data.totalHits > 0) {
                 refs.loadMoreBtn.classList.remove('is_hidden');
             }
-            
         })
 }
 /////////////////////////////////////////
 
 function onLoadMore() {
-  
     page += 1;
 
     fetchPhoto(searchQuery, page)
         .then(data => {
+            const allPag = Math.ceil(data.totalHits / 40);
             if (data.totalHits > 0) {
 
                 Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
 
-            } else {
-               
+            }
+            if (page > allPag) {
                 Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+                refs.loadMoreBtn.classList.add('is_hidden');
             }
             refs.gallary.insertAdjacentHTML('beforeend', createMarkupCard(data.hits));
             addSimpleLightbox();
