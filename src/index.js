@@ -13,12 +13,10 @@ const refs = {
 let searchQuery = '';
 let page = 1;
 
-/////////////////////////////////////////
-
 function onSearch(e) {
 
     e.preventDefault();
-
+    page = 1; //сброс странички на перевую
     //при submit form -> сохранять текущее значение input
     searchQuery = e.currentTarget.elements.searchQuery.value;
     if (searchQuery === '') {
@@ -39,7 +37,6 @@ function onSearch(e) {
             }
         })
 }
-/////////////////////////////////////////
 
 function onLoadMore() {
     page += 1;
@@ -60,7 +57,6 @@ function onLoadMore() {
             addSimpleLightbox();
         })
 }
-/////////////////////////////////////////
 
 const createMarkupCard = (data) => {
 
